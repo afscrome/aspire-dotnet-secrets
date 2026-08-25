@@ -1,4 +1,4 @@
-namespace Aspire.Hosting;
+namespace AlexCrome.Aspire.Hosting.UserJwts;
 
 public sealed record JwtClaimDefault(
     string Value,

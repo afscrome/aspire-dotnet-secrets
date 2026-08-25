@@ -1,5 +1,6 @@
 using Aspire.Hosting.ApplicationModel;
 using Microsoft.IdentityModel.Tokens;
+using AlexCrome.Aspire.Hosting.UserJwts;
 
 namespace Aspire.Hosting;
 

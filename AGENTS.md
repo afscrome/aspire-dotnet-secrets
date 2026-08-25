@@ -32,7 +32,7 @@ This repo contains an Aspire hosting integration package that adds dashboard and
   - Integration test project.
 - `playground/AppHost/AlexCrome.Aspire.Hosting.UserJwts.AppHost.csproj`
   - Aspire AppHost sample for manual checks.
-- `playground/DotnetAppWithAuth/ApiService.csproj`
+- `playground/DotnetAppWithAuth/DotnetAppWithAuth.csproj`
   - Sample API service used by the AppHost.
 
 ## Build and Test Entry Points

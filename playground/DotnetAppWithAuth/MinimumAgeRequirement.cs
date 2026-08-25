@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 
-namespace aspirifriday.ApiService;
+namespace DotnetAppWithAuth;
 
 public sealed class MinimumAgeRequirement(int minimumAge) : IAuthorizationRequirement
 {

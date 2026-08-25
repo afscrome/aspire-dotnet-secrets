@@ -1,4 +1,4 @@
-using aspirifriday.ApiService;
+using DotnetAppWithAuth;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi;
 using OpenTelemetry;

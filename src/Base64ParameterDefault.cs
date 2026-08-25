@@ -1,6 +1,7 @@
 using Aspire.Hosting.ApplicationModel;
+using Aspire.Hosting.Publishing;
 
-namespace Aspire.Hosting;
+namespace AlexCrome.Aspire.Hosting.UserJwts;
 
 internal sealed class Base64ParameterDefault(int byteLength) : ParameterDefault
 {
@@ -13,7 +14,7 @@ internal sealed class Base64ParameterDefault(int byteLength) : ParameterDefault
         return Convert.ToBase64String(System.Security.Cryptography.RandomNumberGenerator.GetBytes(ByteLength));
     }
 
-    public override void WriteToManifest(Publishing.ManifestPublishingContext context)
+    public override void WriteToManifest(ManifestPublishingContext context)
     {
         context.Writer.WriteStartObject("generateBase64");
         context.Writer.WriteNumber("byteLength", ByteLength);

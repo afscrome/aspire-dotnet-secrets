@@ -1,4 +1,5 @@
 using Aspire.Hosting.ApplicationModel;
+using AlexCrome.Aspire.Hosting.UserJwts;
 
 #pragma warning disable ASPIREINTERACTION001
 
