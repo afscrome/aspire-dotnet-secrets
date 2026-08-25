@@ -1,10 +1,11 @@
 using System.Security.Cryptography;
 using Aspire.Hosting;
 using Aspire.Hosting.ApplicationModel;
+using AlexCrome.Aspire.Hosting.UserJwts;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 
-namespace aspirifriday.UnitTests;
+namespace AlexCrome.Aspire.Hosting.UserJwts.UnitTests;
 
 public class SigningTokenResourceTests
 {

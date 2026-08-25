@@ -1,7 +1,8 @@
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
+using AlexCrome.Aspire.Hosting.UserJwts;
 
-namespace aspirifriday.Tests;
+namespace AlexCrome.Aspire.Hosting.UserJwts.IntegrationTests;
 
 [Timeout(30_000)]
 public class DotnetUserJwtConfigurationTests

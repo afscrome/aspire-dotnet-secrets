@@ -1,8 +1,10 @@
+using AlexCrome.Aspire.Hosting.UserJwts;
+
 var builder = DistributedApplication.CreateBuilder(args);
 
 var signingKey = builder.AddJwtSigningToken("signing-key");
 
-builder.AddProject<Projects.ApiService>("apiservice")
+builder.AddProject<Projects.DotnetAppWithAuth>("apiservice")
     .WithHttpHealthCheck("/health")
     .WithJwtToken(
         signingKey,

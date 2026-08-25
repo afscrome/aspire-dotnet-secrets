@@ -2,7 +2,7 @@ using Aspire.Hosting.ApplicationModel;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.IdentityModel.JsonWebTokens;
 
-namespace Aspire.Hosting;
+namespace AlexCrome.Aspire.Hosting.UserJwts;
 
 public sealed class SigningTokenResource(
     [ResourceName]string name,

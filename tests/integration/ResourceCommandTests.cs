@@ -1,4 +1,6 @@
-namespace aspirifriday.Tests;
+using AlexCrome.Aspire.Hosting.UserJwts;
+
+namespace AlexCrome.Aspire.Hosting.UserJwts.IntegrationTests;
 
 #pragma warning disable ASPIREINTERACTION001
 
