@@ -63,6 +63,8 @@ jobs:
       DOTNET_CLI_TELEMETRY_OPTOUT: true
       DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
       DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION: true
+      # Skip the SDK's own first-time-setup dev cert generation - we trust the dev cert ourselves via the "Trust dev certs" step below.
+      DOTNET_GENERATE_ASPNET_CERTIFICATE: false
       TERM: xterm
 
     steps:
@@ -73,6 +75,16 @@ jobs:
       - name: ⚙️ Setup .NET
         uses: actions/setup-dotnet@v6
 
+      - name: 📥 Restore
+        id: restore
+        run: >-
+          dotnet restore "${{ inputs.solution-path }}"
+          ${{ env.COMMON_MSBUILD_ARGUMENTS }}
+          -bl:${{ env.BINLOG_PATH }}/restore.binlog
+
+      # Run after Restore (the first `dotnet` call) so the SDK's one-time first-time setup has
+      # already completed sequentially, rather than racing with it here - see
+      # https://github.com/dotnet/runtime/issues/80619.
       - name: 🔒 Trust dev certs
         id: trust-dev-certs
         if: runner.os == 'Linux'
@@ -84,13 +96,6 @@ jobs:
             echo "dev-certs https --trust failed with exit code $EXIT_CODE"
             exit $EXIT_CODE
           fi
-
-      - name: 📥 Restore
-        id: restore
-        run: >-
-          dotnet restore "${{ inputs.solution-path }}"
-          ${{ env.COMMON_MSBUILD_ARGUMENTS }}
-          -bl:${{ env.BINLOG_PATH }}/restore.binlog
 
       - name: 🔨 Build
         id: build
