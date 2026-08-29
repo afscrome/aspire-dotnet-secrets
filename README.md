@@ -8,27 +8,32 @@
 ![Demo of generating a token in the Aspire dashboard](docs/demo.gif)
 
 ```cs
-var signingKey = builder.AddJwtSigningToken("signing-key");
+var signingKey = builder.AddJwtSigningToken("signing-key")
+    .WithIssuer("helpdesk-dev")
+    .WithDefaultClaim("aud", "helpdesk-api");
 
 resource.WithJwtToken(
     signingKey,
-    commandName: "jwt-user",
-    displayName: "Generate Token",
-    description: "Generate a signed user JWT bearer token using the configured static signing key.",
+    commandName: "jwt-customer",
+    displayName: "Generate Customer Token",
+    description: "Generate a signed customer JWT for testing tenant-scoped access.",
     additionalClaims: new Dictionary<string, JwtClaimDefault>
     {
-        ["aud"] = new("dotnetappwithauth"),
-        ["sub"] = new("", UserConfigurable: true, Label: "User ID", Description: "Value used for the sub claim."),
-        ["age"] = new("18", UserConfigurable: true, Label: "Age claim", Description: "User's age used for authorization checks."),
+        ["sub"] = new("alice", UserConfigurable: true, Label: "User ID", Description: "Value used for the sub claim."),
+        ["org"] = new("acme", UserConfigurable: true, Label: "Org", Description: "Tenant the caller belongs to."),
+        ["role"] = new("customer"),
+        ["scope"] = new("tickets:read:own tickets:write:own"),
     });
 ```
 
 Getting tokens via aspire resource commands
 ```bash
-aspire resource apiservice jwt-user
-aspire resource apiservice jwt-user --sub hello --age 21
-aspire resource apiservice jwt-user --help
+aspire resource apiservice jwt-customer
+aspire resource apiservice jwt-customer --sub bob --org globex
+aspire resource apiservice jwt-customer --help
 ```
+
+The [playground sample](playground/HelpdeskApi) is a small multi-tenant helpdesk/ticketing API that shows this off end-to-end: customer tokens are scoped to their own org's tickets, agent/admin tokens see across orgs, and individual actions (filing, assigning, closing, deleting a ticket) are gated by a mix of `scope` and `role` claims. A companion [Helpdesk Console](playground/HelpdeskWeb) frontend (the `web` resource) lets you paste a generated token and drive the API interactively instead of curling it.
 
 ## Why This Exists
 
@@ -104,7 +109,7 @@ builder.AddProject<Projects.MyApi>("api")
         {
             ["aud"] = new("my-api"),
             ["sub"] = new("dev-user", UserConfigurable: true, Label: "User ID"),
-            ["age"] = new("18", UserConfigurable: true, Label: "Age")
+            ["role"] = new("admin", UserConfigurable: true, Label: "Role")
         });
 ```
 

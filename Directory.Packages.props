@@ -2,9 +2,9 @@
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageVersion Include="Aspire.Hosting" Version="13.5.0" />
+    <PackageVersion Include="Aspire.Hosting.JavaScript" Version="13.5.2" />
     <PackageVersion Include="Aspire.Hosting.Testing" Version="13.5.0" />
     <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.10.0" />
     <PackageVersion Include="Microsoft.Testing.Extensions.GitHubActionsReport" Version="1.0.0-alpha.26377.5" />
@@ -20,7 +20,6 @@
     <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="8.22.0" />
     <PackageVersion Include="TUnit" Version="1.65.31" />
   </ItemGroup>
-
   <ItemGroup>
     <GlobalPackageReference Include="Nerdbank.GitVersioning" Version="3.10.91" />
   </ItemGroup>

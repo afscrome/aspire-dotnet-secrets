@@ -1,0 +1,96 @@
+@HelpdeskApi_HostAddress = http://localhost:5537
+
+### Generate a token first via the Aspire dashboard resource commands (or `aspire resource apiservice jwt-customer`)
+### and paste it below.
+@token = paste-a-generated-token-here
+
+### See the identity encoded in your token.
+GET {{HelpdeskApi_HostAddress}}/whoami
+Authorization: Bearer {{token}}
+
+###
+
+### List tickets. Requires tickets:read:own (your own org) or tickets:read:any (every org,
+### staff role required). Customers only see their own org regardless of scope.
+GET {{HelpdeskApi_HostAddress}}/tickets
+Authorization: Bearer {{token}}
+
+###
+
+### With tickets:read:any (agent/admin), filter tickets to a specific company.
+GET {{HelpdeskApi_HostAddress}}/tickets?org=globex
+Authorization: Bearer {{token}}
+
+###
+
+### File a new ticket. Requires tickets:write:own or tickets:write:any - the ticket is always
+### filed under your own org either way.
+POST {{HelpdeskApi_HostAddress}}/tickets
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "subject": "Monitor flickering on startup",
+  "body": "Started this morning. Happens a few times an hour, only on the left display."
+}
+
+###
+
+### Add a comment to ticket 1. Requires tickets:write:own (only on your own org's tickets) or
+### tickets:write:any (any org, staff role required).
+POST {{HelpdeskApi_HostAddress}}/tickets/1/comments
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "text": "Looking into this now."
+}
+
+###
+
+### Assign ticket 1 (requires the tickets:assign scope and an agent/admin role).
+POST {{HelpdeskApi_HostAddress}}/tickets/1/assign
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "assignedTo": "agent.sam"
+}
+
+###
+
+### Close ticket 1. Admins need tickets:close:any (any ticket, any org). Customers need
+### tickets:close:own (any ticket, but only within their own org). Agents can never close
+### tickets, even if granted one of these scopes.
+POST {{HelpdeskApi_HostAddress}}/tickets/1/close
+Authorization: Bearer {{token}}
+
+###
+
+### Hard-delete ticket 1 (admin role only).
+DELETE {{HelpdeskApi_HostAddress}}/tickets/1
+Authorization: Bearer {{token}}
+
+###
+
+### List companies (agent/admin role only).
+GET {{HelpdeskApi_HostAddress}}/companies
+Authorization: Bearer {{token}}
+
+###
+
+### Add a company (admin role only).
+POST {{HelpdeskApi_HostAddress}}/companies
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "id": "initech",
+  "name": "Initech"
+}
+
+###
+
+### Remove a company (admin role only).
+DELETE {{HelpdeskApi_HostAddress}}/companies/initech
+Authorization: Bearer {{token}}

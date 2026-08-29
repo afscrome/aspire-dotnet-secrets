@@ -1,7 +1,11 @@
 <Solution>
   <Folder Name="/playground/">
     <Project Path="playground/AppHost/AlexCrome.Aspire.Hosting.UserJwts.AppHost.csproj" />
-    <Project Path="playground/DotnetAppWithAuth/DotnetAppWithAuth.csproj" />
+    <Project Path="playground/HelpdeskApi/HelpdeskApi.csproj" />
+    <Folder Name="/playground/HelpdeskWeb/">
+      <File Path="playground/HelpdeskWeb/package.json" />
+      <File Path="playground/HelpdeskWeb/README.md" />
+    </Folder>
   </Folder>
   <Folder Name="/src/">
     <Project Path="src/AlexCrome.Aspire.Hosting.UserJwts.csproj" />

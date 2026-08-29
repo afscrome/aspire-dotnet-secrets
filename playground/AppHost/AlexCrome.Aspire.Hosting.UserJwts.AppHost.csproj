@@ -8,8 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.JavaScript" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
-    <ProjectReference Include="..\DotnetAppWithAuth\DotnetAppWithAuth.csproj" />
+    <ProjectReference Include="..\HelpdeskApi\HelpdeskApi.csproj" />
     <ProjectReference Include="..\..\src\AlexCrome.Aspire.Hosting.UserJwts.csproj" IsAspireProjectResource="false" />
   </ItemGroup>
 

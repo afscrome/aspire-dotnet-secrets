@@ -1,7 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <RootNamespace>DotnetAppWithAuth</RootNamespace>
+    <RootNamespace>HelpdeskApi</RootNamespace>
     <UserSecretsId>f4644c89-a3a8-4c48-bb3e-6288a2586c5b</UserSecretsId>
   </PropertyGroup>
 

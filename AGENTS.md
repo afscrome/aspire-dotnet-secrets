@@ -32,8 +32,10 @@ This repo contains an Aspire hosting integration package that adds dashboard and
   - Integration test project.
 - `playground/AppHost/AlexCrome.Aspire.Hosting.UserJwts.AppHost.csproj`
   - Aspire AppHost sample for manual checks.
-- `playground/DotnetAppWithAuth/DotnetAppWithAuth.csproj`
-  - Sample API service used by the AppHost.
+- `playground/HelpdeskApi/HelpdeskApi.csproj`
+  - Sample API service used by the AppHost (a small multi-tenant helpdesk/ticketing API).
+- `playground/HelpdeskWeb/`
+  - Vite + React frontend (`web` resource in the AppHost) for interacting with `HelpdeskApi` using a pasted token. Not a `.csproj`; run via `dotnet build`/`aspire start` at the repo root, not `npm run dev` directly (it needs `VITE_API_BASE_URL` injected by Aspire).
 
 ## Build and Test Entry Points
 

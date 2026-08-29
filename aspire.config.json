@@ -1,5 +1,8 @@
 {
   "appHost": {
     "path": "playground/AppHost/AlexCrome.Aspire.Hosting.UserJwts.AppHost.csproj"
+  },
+  "features": {
+    "defaultWatchEnabled": "true"
   }
 }

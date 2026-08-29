@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\playground\DotnetAppWithAuth\DotnetAppWithAuth.csproj" />
+    <ProjectReference Include="..\..\playground\HelpdeskApi\HelpdeskApi.csproj" />
     <ProjectReference Include="..\..\src\AlexCrome.Aspire.Hosting.UserJwts.csproj" />
   </ItemGroup>
 
